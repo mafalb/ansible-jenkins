@@ -1,0 +1,18 @@
+#! vim: ft=yaml ts=2:
+---
+
+jenkins:
+  # $ gpg --dry-run --no-options --with-fingerprint jenkins-ci.org.key 
+  # ...
+  # pub  1024D/D50582E6 2009-02-01 Kohsuke Kawaguchi <kk@kohsuke.org>
+  #       Key fingerprint = 150F DE3F 7787 E7D1 1EF4  E12A 9B7D 32F2 D505 82E6
+  # uid                            [jpeg image of size 3704]
+  # uid                            Kohsuke Kawaguchi <kohsuke.kawaguchi@cloudbees.com>
+  # uid                            Kohsuke Kawaguchi <kohsuke@cloudbees.com>
+  # uid                            Kohsuke Kawaguchi <kkawaguchi@cloudbees.com>
+  # sub  2048g/10AF40FE 2009-02-01
+  # sub  4096R/C2734255 2016-11-01
+  #
+  pubkey:
+    src: jenkins-ci.org.key
+    fingerprint: 150F DE3F 7787 E7D1 1EF4  E12A 9B7D 32F2 D505 82E6

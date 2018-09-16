@@ -1,14 +1,13 @@
+#! vim: ft=yaml ts=2:
 ---
 
 - name: packages are installed
   package:
-    name: "{{ item }}"
+    name:
+      - fontconfig
+      - dejavu-sans-fonts
+      - jenkins
     state: present
-  with_items:
-    - java-1.8.0-openjdk-headless
-    - jenkins
-    - fontconfig
-    - dejavu-sans-fonts
 
 - name: jenkins is running
   service:

@@ -1,0 +1,18 @@
+#! vim: ft=yaml ts=2:
+---
+
+- name: include gpg pubkey
+  include_role:
+    role: rpm/pubkey
+  vars:
+    src: "{{ jenkins.pubkey.src }}"
+    dest: "{{ jenkins.pubkey.dest }}"
+    fingerprint: "{{ jenkins.pubkey.fingerprint }}"
+
+- name: yum repository is present
+  yum_repository:
+    name: Jenkins
+    baseurl: "{{ jenkins.yum.baseurl }}"
+    description: Jenkins
+    gpgcheck: yes
+    state: present

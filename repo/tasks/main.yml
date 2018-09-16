@@ -1,0 +1,18 @@
+#! vim: ft=yaml ts=2:
+---
+
+- name: assert that we support the OS
+  assert:
+    that: ansible_os_family == 'RedHat'
+
+- name: set OS dependent variables
+  include_vars:
+    file: "{{ ansible_os_family }}.yml"
+
+- debug: var=jenkins
+  tags:
+    - never
+    - debug
+
+- name: include OS specific tasks
+  include_tasks: "{{ ansible_os_family }}.yml"

@@ -1,0 +1,8 @@
+#! ft=yaml ts=2:
+---
+
+jenkins:
+  yum:
+    baseurl: http://pkg.jenkins.io/redhat-stable
+  pubkey:
+    dest: GPG-RPM-KEY-jenkins-ci.org.key
