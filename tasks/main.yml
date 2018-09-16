@@ -1,0 +1,23 @@
+---
+
+- name: packages are installed
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - java-1.8.0-openjdk-headless
+    - jenkins
+    - fontconfig
+    - dejavu-sans-fonts
+
+- name: jenkins is running
+  service:
+    name: jenkins
+    state: started
+
+# manual steps at this point
+#
+# unlock jenkins
+# install plugins
+# create user
+# disable JNLP3

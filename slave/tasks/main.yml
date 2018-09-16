@@ -1,0 +1,22 @@
+---
+
+- name: packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - java-1.8.0-openjdk-headless
+    - openssh-server
+
+- name: jenkins user
+  user:
+    name: jenkins
+    state: present
+
+- debug: var=data
+- name: jenkins master public key
+  authorized_key:
+    key: "{{ item }}"
+    user: jenkins
+    state: present
+  with_items: "{{ data.sshkeys }}"
