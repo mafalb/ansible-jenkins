@@ -1,2 +1,5 @@
 #! vim: ft=yaml ts=2:
 ---
+
+#jenkins:
+#  java_home: /usr/lib/jvm/jre

@@ -1,6 +1,15 @@
 #! vim: ft=yaml ts=2:
 ---
 
+- debug: var=jenkins
+  tags:
+    - never
+    - debug
+
+- assert:
+    that:
+      - jenkins.java_home is defined
+
 - name: packages are installed
   package:
     name:
@@ -8,6 +17,13 @@
       - dejavu-sans-fonts
       - jenkins
     state: present
+
+- lineinfile:
+    path: /etc/sysconfig/jenkins
+    line: JENKINS_JAVA_CMD="{{ jenkins.java_home }}/jre/bin/java"
+    regexp: ^JENKINS_JAVA_CMD=
+    state: present
+    backup: true
 
 - name: jenkins is running
   service:
